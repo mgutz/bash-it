@@ -9,5 +9,11 @@ export LSCOLORS='Gxfxcxdxdxegedabagacad'
 
 # Load the theme
 if [[ $BASH_IT_THEME ]]; then
-    source "$BASH_IT/themes/$BASH_IT_THEME/$BASH_IT_THEME.theme.bash"
+    # Allow theme file to be used directly. Useful when theme is outside of
+    # BASH_IT directory.
+    if [[ -f "$BASH_IT_THEME" ]]; then
+        source "$BASH_IT_THEME"
+    else
+        source "$BASH_IT/themes/$BASH_IT_THEME/$BASH_IT_THEME.theme.bash"
+    fi
 fi
